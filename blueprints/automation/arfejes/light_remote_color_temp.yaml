@@ -6,7 +6,7 @@ blueprint:
     v1.0.0
   domain: automation
   author: arfejes
-  source_url: https://gitlab.com/arfejes/blueprints/-/blob/main/blueprints/automation/arfejes/light_remote_color_temp.yaml
+  source_url: https://github.com/arfejes/homeassistant_shared/blob/main/blueprints/automation/arfejes/light_remote_color_temp.yaml
   input: 
     target_light:
       name: Light
