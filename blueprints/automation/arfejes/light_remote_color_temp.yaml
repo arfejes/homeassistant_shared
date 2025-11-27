@@ -35,7 +35,7 @@ conditions:
 actions:
   - variables:
       lamp: !input target_light
-      steps: [2200, 2600, 3000, 3400, 4000]
+      steps: [2200, 4000, 3000, 3400, 4000]
       current_ct: "{{ state_attr(lamp, 'color_temp_kelvin') | int }}"
       # find closest step if current_ct not in list
       next_ct: >
