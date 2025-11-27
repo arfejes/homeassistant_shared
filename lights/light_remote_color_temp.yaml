@@ -1,8 +1,12 @@
 blueprint:
   name: Color temp control
-  description: Control color temperature of a light with a remote trigger.
+  description: > 
+    Control color temperature of a light with a remote trigger.
+
+    v1.0.0
   domain: automation
   author: arfejes
+  source_url: https://gitlab.com/arfejes/blueprints/-/blob/main/lights/light_remote_color_temp.yaml
   input: 
     target_light:
       name: Light
