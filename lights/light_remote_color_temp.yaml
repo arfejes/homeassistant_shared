@@ -1,0 +1,48 @@
+blueprint:
+  name: Color temp control
+  description: Control color temperature of a light with a remote trigger.
+  domain: automation
+  author: arfejes
+  input: 
+    target_light:
+      name: Light
+      description: Select the lamp to be controlled.
+      selector:
+        entity:
+          domain:
+            - light
+
+    remote_trigger:
+      name: Trigger (Remote button)
+      description: Select the specific trigger that should trigger the color temperature change. 
+      selector:
+        trigger: {}
+
+mode: queued
+max: 3
+
+trigger: !input remote_trigger
+
+conditions:
+  - condition: state
+    entity_id: !input target_light
+    state: "on"
+
+actions:
+  - variables:
+      lamp: !input target_light
+      steps: [2200, 2600, 3000, 3400, 4000]
+      current_ct: "{{ state_attr(lamp, 'color_temp_kelvin') | int }}"
+      # find closest step if current_ct not in list
+      next_ct: >
+        {% set next = steps | select("gt", current_ct) | list %}
+        {% if next | length > 0 %}
+          {{ next[0] }}   {# First step greater than current_ct #}
+        {% else %}
+          {{ steps[0] }}  {# Wrap around to first step #}
+        {% endif %}
+  - action: light.turn_on
+    data:
+      kelvin: "{{ next_ct }}"
+    target:
+      entity_id: "{{ lamp }}"
