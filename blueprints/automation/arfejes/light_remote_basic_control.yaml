@@ -1,0 +1,88 @@
+blueprint:
+  name: Color temp control
+  description: > 
+    Control color temperature of a light with a remote trigger.
+
+    v1.0.0
+  domain: automation
+  author: arfejes
+  source_url: https://raw.githubusercontent.com/arfejes/homeassistant_shared/refs/heads/light-remote-basic-control/blueprints/automation/arfejes/light_remote_basic_control.yaml
+  input: 
+    target_light:
+      name: Light
+      description: Select the lamp to be controlled.
+      selector:
+        entity:
+          domain:
+            - light
+#    trigger_on:
+#      name: Trigger On
+#      id: trigger_on
+#      description: The trigger that will turn the lamp on. 
+#      selector:
+#        trigger: {}
+#    trigger_off:
+#      name: Trigger Off
+#      id: trigger_off
+#      description: The trigger that will turn the lamp off. 
+#      selector:
+#        trigger: {}
+    trigger_toggle:
+      name: Trigger to toggle lamp
+      id: trigger_toggle
+      description: The trigger that will toggel the lamp. 
+      selector:
+        trigger: {}
+    trigger_dim_up:
+      name: Trigger to dim up
+      id: trigger_dim_up
+      description: The trigger that will make the lamp brighter. 
+      selector:
+        trigger: {}
+    trigger_dim_down:
+      name: Trigger to dim
+      id: trigger_dim_down
+      description: The trigger that will make the lamp dimmer. 
+      selector:
+        trigger: {}
+
+
+mode: queued
+max: 3
+
+triggers:
+  - triggers: !input trigger_on
+  - triggers: !input trigger_off
+  - triggers: !input trigger_dim_up
+  - triggers: !input trigger_dim_down
+
+
+conditions: []
+actions:
+  - variables:
+      lamp: !input target_light
+  - if:
+      - condition: trigger
+        id:
+          - trigger_dim_up
+    then:
+      - domain: light
+        entity_id: "{{ lamp }}"
+        type: brightness_increase
+  - if:
+      - condition: trigger
+        id:
+          - trigger_dim_down
+    then:
+      - domain: light
+        entity_id: "{{ lamp }}"
+        type: brightness_decrease
+  - if:
+      - condition: trigger
+        id:
+          - trun_on
+    then:
+      - domain: light
+        entity_id: "{{ lamp }}"
+        type: toggle
+
