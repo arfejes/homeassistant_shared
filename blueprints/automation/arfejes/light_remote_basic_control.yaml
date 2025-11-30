@@ -52,11 +52,11 @@ trigger:
 #  - triggers:
 #    entity_id: !input trigger_off
 #    id: trigger_off
-  - entity_id: !input trigger_toggle
+  - triggers: !input trigger_toggle
     id: trigger_toggle
-  - entity_id: !input trigger_dim_up
+  - triggers: !input trigger_dim_up
     id: trigger_dim_up
-  - entity_id: !input trigger_dim_down
+  - triggers: !input trigger_dim_down
     id: trigger_dim_down
 
 
