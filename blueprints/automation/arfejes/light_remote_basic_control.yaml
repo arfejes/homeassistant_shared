@@ -45,21 +45,18 @@ blueprint:
 mode: queued
 max: 3
 
-triggers:
+trigger:
 #  - triggers:
 #    entity_id: !input trigger_on
 #    id: trigger_on
 #  - triggers:
 #    entity_id: !input trigger_off
 #    id: trigger_off
-  - triggers:
-    entity_id: !input trigger_toggle
+  - entity_id: !input trigger_toggle
     id: trigger_toggle
-  - triggers:
-    entity_id: !input trigger_dim_up
+  - entity_id: !input trigger_dim_up
     id: trigger_dim_up
-  - triggers:
-    entity_id: !input trigger_dim_down
+  - entity_id: !input trigger_dim_down
     id: trigger_dim_down
 
 
