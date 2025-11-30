@@ -46,9 +46,9 @@ mode: queued
 max: 3
 
 trigger:
-  !input trigger_toggle
-  !input trigger_dim_up
-  !input trigger_dim_down
+  - !input trigger_toggle
+  - !input trigger_dim_up
+  - !input trigger_dim_down
 
 
 conditions: []
