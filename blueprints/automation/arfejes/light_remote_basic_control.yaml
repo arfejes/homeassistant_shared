@@ -52,11 +52,11 @@ trigger:
 #    id: trigger_dim_up
 #  - trigger: !input trigger_dim_down
 #    id: trigger_dim_down
-  - trigger: !input trigger_toggle
+  - !input trigger_toggle
     id: trigger_toggle
-  - trigger: !input trigger_dim_up
+  - !input trigger_dim_up
     id: trigger_dim_up
-  - trigger: !input trigger_dim_down
+  - !input trigger_dim_down
     id: trigger_dim_down
 
 
