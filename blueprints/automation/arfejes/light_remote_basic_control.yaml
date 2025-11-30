@@ -62,16 +62,14 @@ trigger:
 
 conditions: []
 actions:
-  - variables:
-      lamp: !input target_light
   - if:
       - condition: trigger
         id:
           - trigger_dim_up
     then:
-      - service: light.turn_on
+      - action: light.turn_on
         target:
-          entity_id: "{{ lamp }}"
+          entity_id: !input target_light
         data:
           brightness_step_pct: 10
           transition: 0.2
@@ -80,9 +78,9 @@ actions:
         id:
           - trigger_dim_down
     then:
-      - service: light.turn_on
+      - action: light.turn_on
         target:
-          entity_id: "{{ lamp }}"
+          entity_id: !input target_light
         data:
           brightness_step_pct: -10
           transition: 0.2
@@ -92,6 +90,6 @@ actions:
           - trigger_toggle
     then:
       - domain: light
-        entity_id: "{{ lamp }}"
+        entity_id: !input target_light
         type: toggle
 
