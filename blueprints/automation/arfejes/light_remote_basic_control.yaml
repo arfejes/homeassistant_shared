@@ -47,11 +47,8 @@ max: 3
 
 trigger:
   !input trigger_toggle
-#    id: trigger_toggle
   !input trigger_dim_up
-#    id: trigger_dim_up
   !input trigger_dim_down
-#    id: trigger_dim_down
 
 
 conditions: []
