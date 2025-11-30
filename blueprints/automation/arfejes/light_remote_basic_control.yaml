@@ -72,14 +72,14 @@ actions:
       - domain: light
         entity_id: "{{ lamp }}"
         type: brightness_increase
-  - if:
-      - condition: trigger
-        id:
-          - trigger_dim_down
-    then:
-      - domain: light
-        entity_id: "{{ lamp }}"
-        type: brightness_decrease
+#  - if:
+#      - condition: trigger
+#        id:
+#          - trigger_dim_down
+#    then:
+#      - domain: light
+#        entity_id: "{{ lamp }}"
+#        type: brightness_decrease
   - if:
       - condition: trigger
         id:
