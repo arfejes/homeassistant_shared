@@ -89,7 +89,7 @@ actions:
         id:
           - trigger_toggle
     then:
-      - domain: light
-        entity_id: !input target_light
-        type: toggle
+      - action: light.toggle
+        target:
+          entity_id: !input target_light
 
