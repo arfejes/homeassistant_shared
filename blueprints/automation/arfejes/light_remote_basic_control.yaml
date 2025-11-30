@@ -17,31 +17,26 @@ blueprint:
             - light
 #    trigger_on:
 #      name: Trigger On
-#      id: trigger_on
 #      description: The trigger that will turn the lamp on. 
 #      selector:
 #        trigger: {}
 #    trigger_off:
 #      name: Trigger Off
-#      id: trigger_off
 #      description: The trigger that will turn the lamp off. 
 #      selector:
 #        trigger: {}
     trigger_toggle:
       name: Trigger to toggle lamp
-      id: trigger_toggle
       description: The trigger that will toggel the lamp. 
       selector:
         trigger: {}
     trigger_dim_up:
       name: Trigger to dim up
-      id: trigger_dim_up
       description: The trigger that will make the lamp brighter. 
       selector:
         trigger: {}
     trigger_dim_down:
       name: Trigger to dim
-      id: trigger_dim_down
       description: The trigger that will make the lamp dimmer. 
       selector:
         trigger: {}
@@ -51,10 +46,21 @@ mode: queued
 max: 3
 
 triggers:
-  - triggers: !input trigger_on
-  - triggers: !input trigger_off
-  - triggers: !input trigger_dim_up
-  - triggers: !input trigger_dim_down
+#  - triggers:
+#    entity_id: !input trigger_on
+#    id: trigger_on
+#  - triggers:
+#    entity_id: !input trigger_off
+#    id: trigger_off
+  - triggers:
+    entity_id: !input trigger_toggle
+    id: trigger_toggle
+  - triggers:
+    entity_id: !input trigger_dim_up
+    id: trigger_dim_up
+  - triggers:
+    entity_id: !input trigger_dim_down
+    id: trigger_dim_down
 
 
 conditions: []
