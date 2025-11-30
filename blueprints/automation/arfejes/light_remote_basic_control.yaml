@@ -3,7 +3,7 @@ blueprint:
   description: > 
     Control a light with a remote.
 
-    v0.0.1-5
+    v0.0.1-6
   domain: automation
   author: arfejes
   source_url: https://raw.githubusercontent.com/arfejes/homeassistant_shared/refs/heads/light-remote-basic-control/blueprints/automation/arfejes/light_remote_basic_control.yaml
@@ -46,9 +46,9 @@ mode: queued
 max: 3
 
 trigger:
-  - !input trigger_toggle
-  - !input trigger_dim_up
-  - !input trigger_dim_down
+  !input trigger_toggle
+  !input trigger_dim_up
+  !input trigger_dim_down
 
 
 conditions: []
